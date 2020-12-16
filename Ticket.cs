@@ -15,6 +15,7 @@ namespace trellmeup
        public string Labels { get; set; }
        public int CardNo { get; set; }
        public string CardURL { get; set; }
+       public int Accum { get; set; }
 
        public void Populate(IExcelDataReader reader, int _Id)
        {
@@ -29,6 +30,13 @@ namespace trellmeup
            Labels = reader.GetString(6);
            CardNo = Integerize(reader, 7);
            CardURL = reader.GetString(8);
+           Accum = 0;
+
+       }
+
+       public int Sum(int prev){
+           Accum = prev + Points;
+           return Accum;
        }
 
         private int Integerize(IExcelDataReader reader, int position)

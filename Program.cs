@@ -37,7 +37,7 @@ namespace trellmeup
                 }
             }
 
-           foreach(Ticket ticket in tickets
+            var orderedTickets = tickets
                    .Where(x => !x.Title.Contains("[archived]"))
                    .Where(x => x.List == "Backlog" || 
                                x.List == "Sprint Backlog" ||
@@ -49,9 +49,14 @@ namespace trellmeup
                                  x.List == "In Progress"? 3 :
                                  x.List == "Sprint Backlog"? 4 :
                                  x.List == "Backlog"? 5 : 6)
-                   .ThenBy(x => x.Id)) 
+                   .ThenBy(x => x.Id);
+                   
+           int accum = 0;
+           foreach(Ticket ticket in orderedTickets) 
            {
-               Console.WriteLine(ticket.Id + " " + ticket.List + " " +ticket.CardNo + "  " + ticket.Title);
+
+               accum = ticket.Sum(accum);
+               Console.WriteLine(ticket.Id + " " + ticket.Points + " " + ticket.Accum + " " + ticket.List + " " +ticket.CardNo + "  " + ticket.Title);
            }
         }
     }
