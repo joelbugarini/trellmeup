@@ -54,10 +54,12 @@ namespace trellmeup
            int accum = 0;
            foreach(Ticket ticket in orderedTickets) 
            {
-
                accum = ticket.Sum(accum);
                Console.WriteLine(ticket.Id + " " + ticket.Points + " " + ticket.Accum + " " + ticket.List + " " +ticket.CardNo + "  " + ticket.Title);
            }
+           ReportFactory factory = new ReportFactory();
+           factory.Build();
+       
         }
     }
 }
