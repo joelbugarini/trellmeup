@@ -16,23 +16,70 @@ namespace trellmeup
        public int CardNo { get; set; }
        public string CardURL { get; set; }
        public int Accum { get; set; }
+       public string Area { get; set; }
+       public string Extract { get; set; }
+       public Sprint Sprint { get; set; }
 
        public void Populate(IExcelDataReader reader, int _Id)
        {
            Id = _Id;
-       
-           List = reader.GetString(0);
+            List = reader.GetString(0);
            Title = reader.GetString(1);
-           Description = reader.GetString(2);
+           Description = GetDescription(reader.GetString(2));
+           Extract = GetExtract(reader.GetString(2));
            Points = Integerize(reader, 3);
            Due = reader.GetString(4);
            Members = reader.GetString(5);
            Labels = reader.GetString(6);
+           Area = GetArea(reader.GetString(6));
            CardNo = Integerize(reader, 7);
            CardURL = reader.GetString(8);
            Accum = 0;
-
+            
        }
+
+        private string GetExtract(string text)
+        {
+            if (text == null)
+                return "";
+
+            int start = text.IndexOf("[[");
+            int end = text.IndexOf("]]");
+
+            if (start >= 0)
+                return text.Substring(start + 2, end - start - 2);
+            else
+                return "";
+        }
+
+
+       private string GetArea(string text)
+       {
+            if(text == null)
+               return "";
+
+           if(text.Contains("Estado")) return "Estado";
+           if(text.Contains("Municipios")) return "Municipios";
+           if(text.Contains("Calidad")) return "Calidad";
+           if(text.Contains("Mayor")) return "Mayor";
+           if(text.Contains("Obras")) return "Obras";
+           if(text.Contains("Sistema")) return "Sistema";
+
+           return "";
+       }
+
+        private string GetDescription(string text)
+        {
+            if (text == null)
+                return "";
+
+            int start = text.IndexOf("[[");
+            int end = text.IndexOf("]]");
+            if (start >= 0)
+                return text.Remove(start, end - start - 1);
+            else
+                return text;
+        }
 
        public int Sum(int prev){
            Accum = prev + Points;
@@ -43,6 +90,10 @@ namespace trellmeup
         {
             int result = 0;
             var fileType = reader.GetFieldType(position);
+
+            if (fileType == null)
+                return 0;
+
             if(fileType.Equals(typeof(System.Int32)))
             {
                 return reader.GetInt32(position);

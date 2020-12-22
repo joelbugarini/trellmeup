@@ -1,0 +1,8 @@
+﻿Title
+Product Owner: Joaquin Garcia
+Step 1: Story Points Estimation
+Step 2: Sprint Planning
+Step 3: Daily Meeting
+DoD
+Step 4: Sprint Review
+Step 5: Release Planning
