@@ -35,7 +35,6 @@ namespace trellmeup
            CardNo = Integerize(reader, 7);
            CardURL = reader.GetString(8);
            Accum = 0;
-            
        }
 
         private string GetExtract(string text)

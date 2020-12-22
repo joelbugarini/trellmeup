@@ -109,6 +109,7 @@ namespace trellmeup
                     sprint.Tickets.Add(ticket);
                 else
                 {
+                    sprint.Tickets.Add(ticket);
                     currentSprint++;
                     sprint = sprints.First(x => x.Id == currentSprint);
                     accum += sprint.Points;
