@@ -81,23 +81,33 @@ namespace trellmeup
         {
             var sprints = new List<Sprint>();
 
-            sprints.Add(new Sprint(){ Id = 1, Name = "Primera", Points = 100, DeadLine = "8 de enero." });
-            sprints.Add(new Sprint(){ Id = 2, Name = "Segunda", Points = 200, DeadLine = "22 de enero." });
-            sprints.Add(new Sprint(){ Id = 3, Name = "Tercera", Points = 200, DeadLine = "5 de febrero." });
-            sprints.Add(new Sprint(){ Id = 4, Name = "Cuarta",  Points = 200, DeadLine = "19 de febrero." });
-            sprints.Add(new Sprint(){ Id = 5, Name = "Quinta",  Points = 200, DeadLine = "5 de marzo." });
-            sprints.Add(new Sprint(){ Id = 6, Name = "Sexta",   Points = 200, DeadLine = "19 de marzo." });
-            sprints.Add(new Sprint() { Id = 7, Name = "Septima", Points = 200, DeadLine = "2 de abril" });
-            sprints.Add(new Sprint() { Id = 8, Name = "Octava", Points = 200, DeadLine = "16 de abril" });
-            sprints.Add(new Sprint() { Id = 9, Name = "Novena", Points = 200, DeadLine = "30 de abril" });
-            sprints.Add(new Sprint() { Id = 10, Name = "Decima", Points = 200, DeadLine = "14 de mayo" });
+            //sprints.Add(new Sprint(){ Id = 1, Name = "Primera", Points = 100, DeadLine = "8 de enero." });
+            //sprints.Add(new Sprint(){ Id = 2, Name = "Segunda", Points = 200, DeadLine = "22 de enero." });
+            //sprints.Add(new Sprint(){ Id = 3, Name = "Tercera", Points = 100, DeadLine = "5 de febrero." });
+            //sprints.Add(new Sprint(){ Id = 4, Name = "Cuarta",  Points = 200, DeadLine = "19 de febrero." });
+            //sprints.Add(new Sprint(){ Id = 5, Name = "Quinta",  Points = 210, DeadLine = "5 de marzo." });
+            //sprints.Add(new Sprint(){ Id = 6, Name = "Sexta",   Points = 200, DeadLine = "19 de marzo." });
+            sprints.Add(new Sprint() { Id = 7, Name = "Séptima", Points = 150, DeadLine = "9 de abril" });
+            sprints.Add(new Sprint() { Id = 8, Name = "Octava", Points = 150, DeadLine = "23 de abril" });
+            sprints.Add(new Sprint() { Id = 9, Name = "Novena", Points = 150, DeadLine = "30 de abril" });
+            sprints.Add(new Sprint() { Id = 10, Name = "Decima", Points = 150, DeadLine = "7 de mayo" });
+            sprints.Add(new Sprint() { Id = 11, Name = "Onceava", Points = 150, DeadLine = "21 de mayo" });
+            sprints.Add(new Sprint() { Id = 12, Name = "Duodécima", Points = 150, DeadLine = "4 de junio" });
+            sprints.Add(new Sprint() { Id = 13, Name = "Treceava", Points = 150, DeadLine = "18 de junio" });
+            sprints.Add(new Sprint() { Id = 14, Name = "Catorceava", Points = 150, DeadLine = "2 de julio" });
+            sprints.Add(new Sprint() { Id = 15, Name = "Quinceava", Points = 150, DeadLine = "16 de julio" });
+            sprints.Add(new Sprint() { Id = 16, Name = "Dieciseisava", Points = 150, DeadLine = "Fecha pendiente " });
+            sprints.Add(new Sprint() { Id = 17, Name = "Diecisieteava", Points = 150, DeadLine = "Fecha pendiente" });
+            sprints.Add(new Sprint() { Id = 18, Name = "Dieciochoava", Points = 150, DeadLine = "Fecha pendiente" });
+            sprints.Add(new Sprint() { Id = 19, Name = "Decimonovena", Points = 150, DeadLine = "Fecha pendiente" });
+            sprints.Add(new Sprint() { Id = 20, Name = "Decimonovena", Points = 150, DeadLine = "Fecha pendiente" });
 
             return sprints;
         }
 
         private static List<Sprint> LoadTickets(List<Sprint> sprints, List<Ticket> tickets)
         {
-            int currentSprint = 1;
+            int currentSprint = 7;
             var sprint = sprints.First(x => x.Id == currentSprint);
             int accum = sprint.Points;
             foreach (var ticket in tickets)

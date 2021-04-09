@@ -60,7 +60,7 @@ namespace trellmeup
                     body.Append(new Paragraph(new Run(new Text(sprint.Name + " liberación " ))));
                     body.Append(new Paragraph(new Run(new Text("Estimación: " + sprint.DeadLine))));
                     body.Append(new Paragraph(new Run(new Text("Para esta liberación, incluiremos en el "+ 
-                        "sistema funcionalidades como" + string.Join(", ", sprint.Tickets
+                        "sistema funcionalidades como " + string.Join(", ", sprint.Tickets
                         .OrderBy(x => x.Extract).Select(x => x.Extract).Distinct().ToArray())))));
 
                     Table table = new Table();
@@ -70,7 +70,7 @@ namespace trellmeup
                     var th = new TableRow();
 
                     var th_area = new TableCell();
-                    th_area.Append(new Paragraph(new Run(new Text("Area"))));
+                    th_area.Append(new Paragraph(new Run(new Text("Área"))));
 
                     var th_card_no = new TableCell();
                     th_card_no.Append(new Paragraph(new Run(new Text("No."))));

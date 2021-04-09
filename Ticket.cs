@@ -10,7 +10,7 @@ namespace trellmeup
        public string Title { get; set; }
        public string Description { get; set; }
        public int Points { get; set; }
-       public string Due { get; set; }
+       public DateTime Due { get; set; }
        public string Members { get; set; }
        public string Labels { get; set; }
        public int CardNo { get; set; }
@@ -28,7 +28,7 @@ namespace trellmeup
            Description = GetDescription(reader.GetString(2));
            Extract = GetExtract(reader.GetString(2));
            Points = Integerize(reader, 3);
-           Due = reader.GetString(4);
+          // Due = reader.GetDateTime(4);
            Members = reader.GetString(5);
            Labels = reader.GetString(6);
            Area = GetArea(reader.GetString(6));
@@ -63,6 +63,7 @@ namespace trellmeup
            if(text.Contains("Mayor")) return "Mayor";
            if(text.Contains("Obras")) return "Obras";
            if(text.Contains("Sistema")) return "Sistema";
+           if(text.Contains("Vinculación")) return "Vinculación";
 
            return "";
        }
